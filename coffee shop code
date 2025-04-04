@@ -1,3 +1,48 @@
-print: ("Welcome to Muntag's Espresso Escapade!")
+#opening statement
+#coffee shop simulation using queues
+print("Welcome to Muntag's Espresso Escapade!")
+queue = []
+#^^^^ creating an empty queue
+#defining function for taking orders
+def takeorder():
+    name = input("Please enter your name for the order:")
+    queue.append(name)
+    print(f"Thank you {name}, your order has been placed.")
+#function for serving orders
+def serveorder():
+    print(f'{queue[0]} has been served their order!')
+    queue.pop(0)
+    if len(queue) == 0:
+        print("No more orders in the queue.")
+#function for viewing the queue.
+def viewqueue():
+    print("Current Line:")
+    for i in range (len(queue)):
+        print (f"{i+1}. {queue[i]}")
+        if i == len(queue)-1:
+            print("No more orders are in the queue.")
 
-def takeorder:
+def main():
+    #main function to run the program
+    #Asking for the user input to select an option corressponding to the functions defined above
+    while True:
+        print("1. Take Order")
+        print("2. Serve Order")
+        print("3. View Queue")
+        print("4. Exit")
+        choice = input("Please select an option (1-4):")
+        #checking the user's input and calling the corresponding function
+        if choice == '1':
+            takeorder()
+        elif choice == '2':
+            serveorder()
+        elif choice == '3':
+            viewqueue()
+        elif choice == '4':
+            print ("Thank you for visiting Muntag's Espresso Escapade!")
+            break
+        else:
+            print("invalid choice try again")
+           #^^^^^^^^^^^ if the user enters an invalid choice it will send an error message and ask for the input again
+main()
+
